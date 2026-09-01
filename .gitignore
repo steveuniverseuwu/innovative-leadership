@@ -1,0 +1,24 @@
+# Vercel & build artifacts
+.vercel
+*.zip
+
+# Unused/raw drafts
+Stages-of-learning.png
+istockphoto-*
+persuasive-leader.*
+strategic-vision.jpg
+trust-handshake.*
+upward-communication.*
+adsadas.png
+career-development-*
+children-s-study-*
+erdasdas.png
+keaida.png
+public-speaker-*
+qwewqeq.png
+rqewqewq.png
+rtwfdasa.png
+presentation.html
+*.docx
+*.webp
+*.avif

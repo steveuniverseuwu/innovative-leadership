@@ -1,0 +1,18 @@
+{
+  "name": "Module 2: Characteristics of Innovative Leaders",
+  "short_name": "Innovative Leaders",
+  "description": "Interactive 25-slide presentation deck on Innovative Leadership in Education (IS 103)",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#0b0f17",
+  "theme_color": "#0b0f17",
+  "icons": [
+    {
+      "src": "./f58ef8e5-7ef1-4e0f-af61-e662a0278a29.png",
+      "sizes": "192x192 512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
