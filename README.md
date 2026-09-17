@@ -27,18 +27,33 @@ Bukidnon State University • College of Arts and Sciences
 
 ---
 
+## 📂 Available Deck Versions
+1. **`index.html` (Presenter Master Deck):**
+   * Includes full spoken speaker scripts / cue cards modal (`N` key).
+   * Includes live interactive class competition game (*Trait Icon Scramble*, Slides 21–22) with live scoring and keyword reveals.
+   * Full 25 slides.
+2. **`study.html` (Classmate Study Deck):**
+   * Stripped of all speaker notes, scripts, and competition game slides.
+   * 23 pure academic review slides directly transitioning from *Henry Sy* to *Key Takeaways*.
+   * Full keyboard navigation (`◀` / `▶` / `Space`), Slide Index Drawer (`S`), and Fullscreen (`F`).
+
+---
+
 ## 💻 Running Locally (100% Offline)
 1. Clone the repository:
    ```bash
-   git clone <YOUR-GITHUB-REPO-URL>
+   git clone https://github.com/steveuniverseuwu/innovative-leadership.git
    ```
-2. Open `index.html` in any web browser (Google Chrome, Microsoft Edge, Brave, or Firefox).
-3. Press **`F`** for Fullscreen and present! No server, build step, or internet connection required.
+2. Open either:
+   * `index.html` — for live presentation with speaker scripts and game.
+   * `study.html` — for studying, reading, and reviewing module concepts.
+3. Press **`F`** for Fullscreen! No server, build step, or internet connection required.
 
 ---
 
 ## ✨ Key Features
-* **25 High-Contrast Visual Slides:** Clean typography, zero vertical scrollbars, and high-resolution visuals.
-* **Integrated Speaker Notes:** Press `N` on any slide to see word-for-word scripts and transitions.
-* **Interactive Class Game:** "Trait Icon Scramble" with live team scoring and keyword reveals.
-* **PWA & Offline Service Worker:** Caches all assets for offline reliability.
+* **High-Contrast Projector Visuals:** Crisp typography, zero vertical scrollbars, and high-resolution visuals.
+* **Integrated Speaker Notes (`index.html`):** Press `N` on any slide for complete presenter speech text.
+* **Interactive Class Game (`index.html`):** "Trait Icon Scramble" with team scoring and keyword reveals.
+* **Streamlined Study Mode (`study.html`):** 23 distraction-free study slides for exam and report prep.
+* **PWA & Offline Service Worker:** Automatically caches both decks and all images for offline reliability.

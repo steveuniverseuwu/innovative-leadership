@@ -1,0 +1,2387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Module 2: Characteristics of Innovative Leaders (Study Deck) | IS 103</title>
+  
+  <!-- PWA & Offline Support -->
+  <link rel="manifest" href="manifest.json" />
+  <meta name="theme-color" content="#0b0f17" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  
+  <!-- High-Legibility Modern Typography: Plus Jakarta Sans (Headings & Body) & Outfit -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800;900&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* ==========================================================================
+       1. PROJECTOR-OPTIMIZED DESIGN TOKENS (Large Type, High Contrast, No AI Lines)
+       ========================================================================== */
+    :root {
+      --font-display: 'Outfit', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-body: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      --font-mono: 'Space Grotesk', monospace;
+
+      /* High-Contrast Palette for Projectors: Deep Charcoal on Warm Milk Canvas */
+      --bg-backdrop: #0b0f17;
+      --bg-slide: #faf8f5;
+      --bg-card-white: #ffffff;
+      --bg-card-warm: #f1ede4;
+      --bg-card-tint: #e8e2d5;
+      
+      --text-dark: #111827;
+      --text-muted: #4b5563;
+      --text-light: #6b7280;
+
+      --accent-terracotta: #c2410c;
+      --accent-ochre: #b45309;
+      --accent-forest: #15803d;
+      --accent-navy: #1e3a8a;
+
+      --radius-sm: 8px;
+      --radius-md: 14px;
+      --radius-lg: 20px;
+      --radius-full: 9999px;
+
+      --shadow-clean: 0 4px 20px -2px rgba(17, 24, 39, 0.05), 0 2px 6px -1px rgba(17, 24, 39, 0.02);
+      --shadow-prominent: 0 10px 30px -4px rgba(17, 24, 39, 0.08);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      background-color: var(--bg-backdrop);
+      font-family: var(--font-body);
+      color: var(--text-dark);
+      -webkit-font-smoothing: antialiased;
+      font-size: 16px;
+    }
+
+    #app {
+      display: flex;
+      flex-direction: column;
+      width: 100vw;
+      height: 100vh;
+      background-color: var(--bg-backdrop);
+      position: relative;
+    }
+
+    /* Top Control Bar */
+    .top-bar {
+      height: 56px;
+      background: #111827;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      color: #fff;
+      z-index: 100;
+      flex-shrink: 0;
+    }
+
+    .top-left {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .module-pill {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      background: #1f2937;
+      color: #f3f4f6;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      letter-spacing: 1px;
+    }
+
+    .top-title {
+      font-family: var(--font-display);
+      font-size: 1rem;
+      font-weight: 700;
+      color: #ffffff;
+    }
+
+    .presenter-badge {
+      background: rgba(194, 65, 12, 0.2);
+      border: 1px solid rgba(194, 65, 12, 0.5);
+      padding: 4px 14px;
+      border-radius: var(--radius-full);
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #fed7aa;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .presenter-badge strong {
+      color: #ffffff;
+      font-family: var(--font-mono);
+    }
+
+    .top-right {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .btn-top {
+      background: #1f2937;
+      border: 1px solid #374151;
+      color: #f3f4f6;
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.82rem;
+      font-weight: 700;
+      font-family: var(--font-body);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.15s ease;
+    }
+
+    .btn-top:hover {
+      background: #374151;
+      color: #ffffff;
+    }
+
+    .slide-num-box {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: #9ca3af;
+      min-width: 65px;
+      text-align: center;
+    }
+
+    .progress-bar-line {
+      position: absolute;
+      top: 55px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: rgba(255,255,255,0.08);
+      z-index: 101;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: #ea580c;
+      width: 4.34%;
+      transition: width 0.3s ease;
+    }
+
+    /* ==========================================================================
+       2. SLIDE VIEWPORT & STAGE
+       ========================================================================== */
+    .stage-wrapper {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .slide-viewport {
+      width: 1260px;
+      height: 708px;
+      max-width: 100%;
+      max-height: 100%;
+      aspect-ratio: 16 / 9;
+      background: var(--bg-slide);
+      border-radius: var(--radius-lg);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .slide {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: none;
+      flex-direction: column;
+      padding: 38px 48px;
+      opacity: 0;
+      background: var(--bg-slide);
+      overflow-y: auto;
+    }
+
+    .slide.active {
+      display: flex;
+      opacity: 1;
+      animation: slideIn 0.3s ease forwards;
+    }
+
+    @keyframes slideIn {
+      from { opacity: 0; transform: translateY(4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* ==========================================================================
+       3. PROJECTOR-READY TYPOGRAPHY (LARGE, CRISP, NO LINES)
+       ========================================================================== */
+    .slide-header-bar {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 22px;
+      flex-shrink: 0;
+    }
+
+    #slide-3,
+    #slide-5,
+    #slide-6,
+    #slide-8,
+    #slide-9,
+    #slide-10,
+    #slide-11,
+    #slide-12,
+    #slide-19,
+    #slide-22 {
+      padding: 28px 48px;
+    }
+
+    /* Downward Box Spacing Adjustment for Specific Slides */
+    #slide-7 .slide-header-bar,
+    #slide-13 .slide-header-bar,
+    #slide-14 .slide-header-bar,
+    #slide-15 .slide-header-bar,
+    #slide-16 .slide-header-bar,
+    #slide-17 .slide-header-bar,
+    #slide-18 .slide-header-bar {
+      margin-bottom: 34px;
+    }
+
+    #slide-7 .slide-main-canvas > *:first-child,
+    #slide-13 .slide-main-canvas > *:first-child,
+    #slide-14 .slide-main-canvas > *:first-child,
+    #slide-15 .slide-main-canvas > *:first-child,
+    #slide-16 .slide-main-canvas > *:first-child,
+    #slide-17 .slide-main-canvas > *:first-child,
+    #slide-18 .slide-main-canvas > *:first-child {
+      margin-top: 10px;
+    }
+
+    .slide-sub-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      color: var(--accent-terracotta);
+      text-transform: uppercase;
+      margin-bottom: 4px;
+    }
+
+    .slide-big-title {
+      font-family: var(--font-display);
+      font-size: 2.35rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.15;
+      letter-spacing: -0.5px;
+    }
+
+    .speaker-tag-solid {
+      font-family: var(--font-mono);
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      background: var(--bg-card-warm);
+      padding: 5px 14px;
+      border-radius: var(--radius-full);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .slide-main-canvas {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 18px;
+    }
+
+    /* Clean Solid Cards (NO LINES / NO BORDER ACCENTS) */
+    .solid-card {
+      background: var(--bg-card-white);
+      border-radius: var(--radius-md);
+      padding: 24px 28px;
+      box-shadow: var(--shadow-clean);
+      position: relative;
+    }
+
+    .solid-card.warm {
+      background: var(--bg-card-warm);
+    }
+    .solid-card.tint {
+      background: var(--bg-card-tint);
+    }
+
+    .card-heading-large {
+      font-family: var(--font-display);
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 12px;
+      line-height: 1.25;
+    }
+
+    .card-body-text {
+      font-size: 1.12rem;
+      line-height: 1.6;
+      color: var(--text-muted);
+    }
+
+    .card-body-text strong {
+      color: var(--text-dark);
+      font-weight: 700;
+    }
+
+    /* Large Projector Quotes */
+    .quote-box-solid {
+      background: var(--bg-card-warm);
+      border-radius: var(--radius-md);
+      padding: 20px 24px;
+      font-size: 1.22rem;
+      font-style: italic;
+      line-height: 1.55;
+      color: var(--text-dark);
+      margin: 10px 0;
+    }
+
+    /* Big Projector Lists */
+    .big-bullet-list {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+
+    .big-bullet-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      font-size: 1.12rem;
+      line-height: 1.55;
+      color: var(--text-dark);
+    }
+
+    .bullet-num-circle {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 800;
+      color: #fff;
+      background: var(--text-dark);
+      width: 28px;
+      height: 28px;
+      border-radius: var(--radius-full);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 3px;
+    }
+
+    /* Large Takeaway Banner (Solid, No Lines) */
+    .takeaway-pill-banner {
+      background: #111827;
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 14px 22px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin-top: auto;
+    }
+
+    .takeaway-badge-tag {
+      background: #ea580c;
+      color: #fff;
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 4px 10px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      flex-shrink: 0;
+    }
+
+    .takeaway-text-bold {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: #f3f4f6;
+      line-height: 1.45;
+    }
+
+    /* Grid Layouts */
+    .layout-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 22px;
+      align-items: stretch;
+    }
+
+    .layout-55-45 {
+      display: grid;
+      grid-template-columns: 1.25fr 1fr;
+      gap: 24px;
+      align-items: stretch;
+    }
+
+    .layout-3-col {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 18px;
+    }
+
+    .layout-4-col {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 14px;
+    }
+
+    /* Clean Visual Placeholders */
+    .asset-placeholder-clean {
+      background: var(--bg-card-warm);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      min-height: 160px;
+    }
+
+    .asset-tag {
+      font-family: var(--font-mono);
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: var(--accent-terracotta);
+      background: rgba(194, 65, 12, 0.12);
+      padding: 3px 10px;
+      border-radius: var(--radius-sm);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .asset-title {
+      font-family: var(--font-display);
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      margin-bottom: 4px;
+    }
+
+    .asset-desc {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      line-height: 1.35;
+    }
+
+    .asset-spec {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      margin-top: 8px;
+    }
+
+    /* ==========================================================================
+       4. SLIDE 1 TITLE MASTHEAD
+       ========================================================================== */
+    .hero-title-stage {
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 20px 10px;
+    }
+
+    .hero-top-info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .hero-univ-tag {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .hero-main-banner {
+      margin: 20px 0;
+    }
+
+    .hero-course-kicker {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: var(--accent-terracotta);
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 10px;
+      display: inline-block;
+    }
+
+    .hero-giant-title {
+      font-family: var(--font-display);
+      font-size: 3.4rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1.08;
+      letter-spacing: -1px;
+      margin-bottom: 16px;
+    }
+
+    .hero-desc-large {
+      font-size: 1.25rem;
+      color: var(--text-muted);
+      max-width: 860px;
+      line-height: 1.55;
+    }
+
+    .hero-footer-grid {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      background: var(--bg-card-warm);
+      padding: 16px 22px;
+      border-radius: var(--radius-md);
+    }
+
+    .hero-roster-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .hero-roster-title {
+      font-family: var(--font-mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+
+    .hero-roster-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .roster-chip {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--text-dark);
+      background: #ffffff;
+      padding: 4px 12px;
+      border-radius: var(--radius-sm);
+    }
+
+    .roster-chip.lead {
+      background: var(--text-dark);
+      color: #ffffff;
+    }
+
+    /* ==========================================================================
+       5. SLIDE 4 & 13 TRAIT GALLERIES
+       ========================================================================== */
+    .trait-gallery-card {
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 16px 18px;
+      box-shadow: var(--shadow-clean);
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      min-height: 112px;
+    }
+
+    .trait-card-info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      flex: 1;
+    }
+
+    .trait-card-num {
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-terracotta);
+      letter-spacing: 0.5px;
+    }
+
+    .trait-card-title {
+      font-family: var(--font-display);
+      font-size: 1.18rem;
+      font-weight: 800;
+      color: var(--text-dark);
+      line-height: 1.2;
+      margin: 3px 0;
+    }
+
+    .trait-card-sub {
+      font-size: 0.88rem;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .trait-card-icon-box {
+      width: 52px;
+      height: 52px;
+      min-width: 52px;
+      background: var(--bg-card-warm);
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.1rem;
+      line-height: 1;
+      user-select: none;
+      flex-shrink: 0;
+    }
+
+    /* Summary Matrix (Slide 13) */
+    .matrix-table-large {
+      width: 100%;
+      border-collapse: collapse;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      overflow: hidden;
+      font-size: 0.95rem;
+      box-shadow: var(--shadow-clean);
+    }
+
+    .matrix-table-large th {
+      background: var(--bg-card-warm);
+      color: var(--text-dark);
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      text-align: left;
+      padding: 12px 16px;
+    }
+
+    .matrix-table-large td {
+      padding: 10px 16px;
+      color: var(--text-dark);
+      border-bottom: 1px solid var(--bg-card-warm);
+      line-height: 1.4;
+    }
+
+    .matrix-table-large tr:nth-child(even) {
+      background: #faf8f5;
+    }
+
+    /* ==========================================================================
+       6. SLIDE 21 LIVE GAME ARENA
+       ========================================================================== */
+    .game-arena-board {
+      background: #ffffff;
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-prominent);
+      display: flex;
+      flex-direction: column;
+      gap: 18px;
+      flex: 1;
+    }
+
+    .round-selector-strip {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      background: var(--bg-card-warm);
+      padding: 8px;
+      border-radius: var(--radius-md);
+    }
+
+    .btn-round-select {
+      background: #ffffff;
+      border: none;
+      color: var(--text-dark);
+      padding: 6px 14px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      cursor: pointer;
+      transition: all 0.15s ease;
+    }
+
+    .btn-round-select:hover, .btn-round-select.active {
+      background: #111827;
+      color: #ffffff;
+    }
+
+    .btn-round-select.tiebreaker {
+      color: var(--accent-terracotta);
+    }
+
+    .btn-round-select.tiebreaker.active {
+      background: var(--accent-terracotta);
+      color: #ffffff;
+    }
+
+    .game-stage-3col {
+      display: grid;
+      grid-template-columns: 1fr 1.6fr 1fr;
+      gap: 20px;
+      align-items: center;
+    }
+
+    .team-podium-card {
+      background: var(--bg-card-warm);
+      border-radius: var(--radius-md);
+      padding: 20px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .team-podium-title {
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      font-weight: 800;
+      color: var(--text-dark);
+    }
+
+    .score-giant-number {
+      font-family: var(--font-mono);
+      font-size: 4.2rem;
+      font-weight: 900;
+      color: var(--text-dark);
+      line-height: 1;
+      margin: 4px 0;
+    }
+
+    .score-btn-pair {
+      display: flex;
+      gap: 8px;
+    }
+
+    .btn-score-ctrl {
+      background: #ffffff;
+      border: none;
+      width: 40px;
+      height: 40px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-size: 1.2rem;
+      font-weight: 800;
+      cursor: pointer;
+      box-shadow: var(--shadow-clean);
+      transition: all 0.15s;
+    }
+
+    .btn-score-ctrl:hover {
+      background: #111827;
+      color: #ffffff;
+    }
+
+    .clue-mystery-podium {
+      background: #111827;
+      color: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      min-height: 220px;
+    }
+
+    .clue-round-tag {
+      font-family: var(--font-mono);
+      font-size: 0.85rem;
+      font-weight: 800;
+      color: #f59e0b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .clue-big-icon {
+      font-size: 4.5rem;
+      margin: 4px 0;
+    }
+
+    .clue-hint-subtitle {
+      font-size: 1rem;
+      color: #9ca3af;
+      font-style: italic;
+    }
+
+    .revealed-keyword-box {
+      margin-top: 14px;
+      background: #16a34a;
+      color: #ffffff;
+      font-family: var(--font-mono);
+      font-size: 1.8rem;
+      font-weight: 900;
+      letter-spacing: 5px;
+      padding: 8px 24px;
+      border-radius: var(--radius-sm);
+      display: none;
+    }
+
+    .game-actions-bar {
+      display: flex;
+      justify-content: center;
+      gap: 14px;
+    }
+
+    .btn-game-master {
+      background: #111827;
+      color: #ffffff;
+      border: none;
+      padding: 10px 22px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-mono);
+      font-weight: 800;
+      font-size: 0.92rem;
+      cursor: pointer;
+      letter-spacing: 0.5px;
+      transition: all 0.2s;
+    }
+
+    .btn-game-master:hover {
+      background: #ea580c;
+    }
+
+    .winner-announcement-bar {
+      background: #ea580c;
+      color: #ffffff;
+      text-align: center;
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      font-family: var(--font-display);
+      font-size: 1.3rem;
+      font-weight: 800;
+      display: none;
+    }
+
+    /* ==========================================================================
+       7. PRESENTER NOTES & SLIDE DRAWER
+       ========================================================================== */
+    .overlay-modal-frame {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(11, 15, 23, 0.85);
+      backdrop-filter: blur(5px);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .overlay-modal-frame.active {
+      display: flex;
+      opacity: 1;
+    }
+
+    .modal-paper-doc {
+      width: 780px;
+      max-width: 90vw;
+      max-height: 85vh;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      box-shadow: 0 20px 40px rgba(0,0,0,0.5);
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .modal-header-top {
+      background: #111827;
+      color: #ffffff;
+      padding: 18px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .modal-title-bold {
+      font-family: var(--font-display);
+      font-size: 1.25rem;
+      font-weight: 800;
+    }
+
+    .modal-body-scroll {
+      padding: 26px;
+      overflow-y: auto;
+      font-size: 1.1rem;
+      line-height: 1.7;
+      color: var(--text-dark);
+      background: #faf8f5;
+    }
+
+    .modal-handoff-pill {
+      margin-top: 18px;
+      background: var(--bg-card-tint);
+      padding: 12px 18px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      color: var(--text-dark);
+    }
+
+    .btn-close-x {
+      background: transparent;
+      border: none;
+      color: #9ca3af;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
+    .btn-close-x:hover { color: #ffffff; }
+
+    /* Drawer Grid */
+    .drawer-paper-doc {
+      width: 880px;
+      max-width: 92vw;
+      max-height: 85vh;
+      background: #ffffff;
+      border-radius: var(--radius-md);
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    .drawer-grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(190px, 1fr));
+      gap: 12px;
+      overflow-y: auto;
+      padding: 12px 4px;
+      max-height: 65vh;
+    }
+
+    .drawer-tile-btn {
+      background: var(--bg-card-warm);
+      border-radius: var(--radius-sm);
+      padding: 12px;
+      cursor: pointer;
+      transition: all 0.15s ease;
+      text-align: left;
+    }
+
+    .drawer-tile-btn:hover, .drawer-tile-btn.active {
+      background: #111827;
+      color: #ffffff;
+      transform: translateY(-2px);
+    }
+
+    .drawer-tile-btn:hover .tile-sub, .drawer-tile-btn.active .tile-sub {
+      color: #d1d5db;
+    }
+
+    /* Bottom Quick Status */
+    .bottom-bar {
+      height: 48px;
+      background: #111827;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 24px;
+      color: #9ca3af;
+      font-size: 0.82rem;
+      font-family: var(--font-mono);
+    }
+
+    .kbd-pill {
+      background: #1f2937;
+      border: 1px solid #374151;
+      color: #f3f4f6;
+      padding: 2px 7px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+
+<div id="app">
+  <!-- Top Navigation Header -->
+  <header class="top-bar">
+    <div class="top-left">
+      <img src="f58ef8e5-7ef1-4e0f-af61-e662a0278a29.png" alt="Logo" style="height: 32px; width: 32px; object-fit: contain; margin-right: 2px;" />
+      <span class="module-pill">IS 103 &bull; MODULE 2</span>
+      <span class="top-title">Characteristics of Innovative Leaders</span>
+    </div>
+    
+    <div class="presenter-badge" id="topPresenterChip">
+      <span>SPEAKER:</span>
+      <strong id="currentPresenterName">JERICHO</strong>
+    </div>
+
+    <div class="top-right">
+      <button class="btn-top" id="btnPrev" title="Previous Slide (Left Arrow)">◀ PREV</button>
+      <div class="slide-num-box" id="slideCounter">01 / 23</div>
+      <button class="btn-top" id="btnNext" title="Next Slide (Right Arrow or Space)">NEXT ▶</button>
+      <button class="btn-top" id="btnDrawer" title="Slide Index (S Key)">📑 INDEX [S]</button>
+      <button class="btn-top" id="btnFullscreen" title="Fullscreen (F Key)">⛶</button>
+    </div>
+  </header>
+
+  <!-- Progress Bar Line -->
+  <div class="progress-bar-line">
+    <div class="progress-fill" id="progressFill"></div>
+  </div>
+
+  <!-- Stage Area (16:9 Viewport) -->
+  <main class="stage-wrapper">
+    <div class="slide-viewport" id="viewport">
+
+      <!-- ====================================================================
+           SLIDE 1: Title Slide (Jericho)
+           ==================================================================== -->
+      <section class="slide active" id="slide-1" data-slide="1" data-presenter="Jericho" data-title="Title Slide">
+        <div class="hero-title-stage">
+          <div class="hero-top-info" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px;">
+            <div style="display: flex; align-items: center; gap: 16px;">
+              <img src="f58ef8e5-7ef1-4e0f-af61-e662a0278a29.png" alt="Innovative Leadership Logo" style="height: 80px; width: 80px; object-fit: contain; filter: brightness(0);" />
+              <div>
+                <div style="font-family: var(--font-mono); font-size: 0.92rem; font-weight: 800; color: var(--accent-terracotta); letter-spacing: 1.5px; text-transform: uppercase;">IS 103</div>
+                <div style="font-family: var(--font-display); font-size: 1.35rem; font-weight: 800; color: var(--text-dark); line-height: 1.15;">Innovative Leadership in Education</div>
+              </div>
+            </div>
+            <span class="module-pill" style="background: var(--text-dark); color: #fff; font-size: 0.85rem; padding: 6px 14px;">Group 2 Presentation</span>
+          </div>
+
+          <div class="hero-main-banner">
+            <span class="hero-course-kicker">Module 2 Presentation Deck</span>
+            <h1 class="hero-giant-title">Characteristics of Innovative Leaders</h1>
+            <p class="hero-desc-large">A comprehensive study on leadership intelligence, foundational HBR traits, objective evaluation, and self-assessment for future educators.</p>
+          </div>
+
+          <div class="hero-footer-grid">
+            <div class="hero-roster-group" style="width: 100%;">
+              <span class="hero-roster-title">Presenting Panel (Group 2)</span>
+              <div class="hero-roster-tags">
+                <span class="roster-chip">Jericho Ayunar (Intro & Orientation)</span>
+                <span class="roster-chip">Zoid Balba (Traits 1–3)</span>
+                <span class="roster-chip">Nhevie Mea Bentillo (Traits 4–7)</span>
+                <span class="roster-chip">Steven Benedict Bernabe (Trait 8, Assessment & Synthesis)</span>
+                <span class="roster-chip">Thrie Jie Barcina (Benefits & Henry Sy)</span>
+                <span class="roster-chip">Yuri Neil Bayron (Takeaways & Closing)</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 2: Welcome to Module 2 (Jericho)
+           ==================================================================== -->
+      <section class="slide" id="slide-2" data-slide="2" data-presenter="Jericho" data-title="Welcome & Learning Outcomes">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Orientation & Outcomes</div>
+            <h2 class="slide-big-title">Welcome to Module 2</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Jericho</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm">
+              <div class="card-heading-large">The Journey of Becoming</div>
+              <div class="quote-box-solid">
+                "You are still in the process of becoming — the University will help you grow and evolve into the innovative leader you are envisioned to be."
+              </div>
+              <p class="card-body-text">This module is not about memorizing static definitions. It is a personal guide to help each of us assess our current strengths, recognize leadership capabilities, and address areas for deliberate growth.</p>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 200px;">
+              <img src="head.png" alt="Student Leadership Evolution" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="layout-3-col">
+            <div class="solid-card">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-terracotta); font-weight: 800; margin-bottom: 4px;">OUTCOME 01</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin-bottom: 6px;">Analyze Traits</div>
+              <p class="card-body-text" style="font-size: 0.98rem;">Examine the 8 key attributes of innovative leaders based on HBR research indicators.</p>
+            </div>
+            <div class="solid-card">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-navy); font-weight: 800; margin-bottom: 4px;">OUTCOME 02</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin-bottom: 6px;">Assess Self</div>
+              <p class="card-body-text" style="font-size: 0.98rem;">Evaluate personal leadership strengths, competencies, and developmental areas.</p>
+            </div>
+            <div class="solid-card">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-forest); font-weight: 800; margin-bottom: 4px;">OUTCOME 03</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin-bottom: 6px;">Summarize Insights</div>
+              <p class="card-body-text" style="font-size: 0.98rem;">Synthesize practical lessons and apply them to future classroom leadership.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 3: The Importance of Assessing Leadership (Jericho)
+           ==================================================================== -->
+      <section class="slide" id="slide-3" data-slide="3" data-presenter="Jericho" data-title="Why Study Innovative Leadership?">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Core Rationale</div>
+            <h2 class="slide-big-title">The Importance of Assessing Leadership</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Jericho</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-2-col">
+            <div class="solid-card tint">
+              <div class="card-heading-large">The Innovation Paradox</div>
+              <ul class="big-bullet-list" style="margin-top: 12px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">1</span>
+                  <span>Organizations universally demand <strong>innovative teams and creative leaders</strong>.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">2</span>
+                  <span>Yet when asked what makes them innovative, leaders answer: <em>"I don't know"</em> or <em>"I haven't given it much thought."</em></span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">3</span>
+                  <span>High performers are rarely adept at explaining the <strong>specific mechanisms</strong> behind their own success.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="solid-card warm" style="display: flex; flex-direction: column; justify-content: space-between;">
+              <div>
+                <div class="card-heading-large">Why Deliberate Study Matters</div>
+                <p class="card-body-text" style="margin-bottom: 8px;">If even seasoned leaders cannot instinctively articulate their habits, we cannot leave leadership to chance. We must <strong>deliberately study, measure, and develop</strong> these qualities.</p>
+              </div>
+              <div style="display: flex; align-items: center; justify-content: center; padding: 2px 0;">
+                <img src="Stages-of-learning-transparent.png" alt="Four Stages of Competence" style="max-height: 215px; width: auto; max-width: 100%; object-fit: contain; filter: drop-shadow(0 6px 14px rgba(0,0,0,0.08));" />
+              </div>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">KEY INSIGHT</span>
+            <span class="takeaway-text-bold">Innovative leadership is not an unexplainable gift — it is a discipline of observable, teachable practices.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 4: 8 Traits Overview (Zoid)
+           ==================================================================== -->
+      <section class="slide" id="slide-4" data-slide="4" data-presenter="Zoid" data-title="The 8 Traits Overview">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Harvard Business Review (2014)</div>
+            <h2 class="slide-big-title">The 8 Traits of Innovative Leaders</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Zoid</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <p class="card-body-text" style="margin-bottom: 6px;">Research published by HBR identified eight core characteristics consistently exhibited by the most innovative leaders:</p>
+          
+          <div class="layout-4-col">
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 01</span>
+                <div class="trait-card-title">Strategic Vision</div>
+                <span class="trait-card-sub">Clear destination</span>
+              </div>
+              <div class="trait-card-icon-box">🔭</div>
+            </div>
+
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 02</span>
+                <div class="trait-card-title">People Focus</div>
+                <span class="trait-card-sub">Deep empathy</span>
+              </div>
+              <div class="trait-card-icon-box">👥</div>
+            </div>
+
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 03</span>
+                <div class="trait-card-title">Reciprocal Trust</div>
+                <span class="trait-card-sub">Psychological safety</span>
+              </div>
+              <div class="trait-card-icon-box">🛡️</div>
+            </div>
+
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 04</span>
+                <div class="trait-card-title">Upward Comm.</div>
+                <span class="trait-card-sub">Bubble up ideas</span>
+              </div>
+              <div class="trait-card-icon-box">⬆️</div>
+            </div>
+
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 05</span>
+                <div class="trait-card-title">Persuasiveness</div>
+                <span class="trait-card-sub">Zeal over power</span>
+              </div>
+              <div class="trait-card-icon-box">🎤</div>
+            </div>
+
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 06</span>
+                <div class="trait-card-title">Stretch Goals</div>
+                <span class="trait-card-sub">Novel methods</span>
+              </div>
+              <div class="trait-card-icon-box">🏔️</div>
+            </div>
+
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 07</span>
+                <div class="trait-card-title">Candid Feedback</div>
+                <span class="trait-card-sub">Direct clarity</span>
+              </div>
+              <div class="trait-card-icon-box">💬</div>
+            </div>
+
+            <div class="trait-gallery-card">
+              <div class="trait-card-info">
+                <span class="trait-card-num">TRAIT 08</span>
+                <div class="trait-card-title">Inspire by Action</div>
+                <span class="trait-card-sub">Living purpose</span>
+              </div>
+              <div class="trait-card-icon-box">🚀</div>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">OVERVIEW</span>
+            <span class="takeaway-text-bold">Let us examine each trait in detail — starting with Traits 1 through 3.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 5: Trait 1 - Strategic Vision (Zoid)
+           ==================================================================== -->
+      <section class="slide" id="slide-5" data-slide="5" data-presenter="Zoid" data-title="Trait 1: Strategic Vision">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 01 &bull; Direction</div>
+            <h2 class="slide-big-title">Display Excellent Strategic Vision</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Zoid</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm" style="padding: 18px 22px;">
+              <div class="card-heading-large" style="margin-bottom: 8px;">Painting the Future Destination</div>
+              <p class="card-body-text" style="font-size: 1.05rem; line-height: 1.5; margin-bottom: 8px;">Innovative leaders describe the future with vivid clarity. They don't micromanage every operational step — they focus on setting the North Star.</p>
+              
+              <div class="quote-box-solid" style="padding: 12px 18px; margin: 6px 0; font-size: 1.1rem; line-height: 1.45;">
+                "The person excelled at creating a clear picture of the goal, while we concentrated on figuring out how to get there."
+                <div style="font-family: var(--font-mono); font-size: 0.78rem; color: var(--text-light); margin-top: 4px;">&mdash; HBR Survey Respondent</div>
+              </div>
+
+              <div class="layout-2-col" style="margin-top: 8px; gap: 10px;">
+                <div class="solid-card" style="padding: 10px 14px;">
+                  <strong style="color: var(--text-dark); display:block; font-size: 0.95rem; margin-bottom: 2px;">Leader's Role:</strong>
+                  <span style="font-size: 0.9rem; color: var(--text-muted);">Defines the <em>Destination</em> and inspires the 'Why'.</span>
+                </div>
+                <div class="solid-card" style="padding: 10px 14px;">
+                  <strong style="color: var(--text-dark); display:block; font-size: 0.95rem; margin-bottom: 2px;">Team's Role:</strong>
+                  <span style="font-size: 0.9rem; color: var(--text-muted);">Discovers the <em>Pathways</em> and engineers the 'How'.</span>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
+              <img src="strategic-vision.png" alt="Strategic Vision: Leader at the Helm" style="width: 100%; height: 100%; object-fit: cover; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">PRINCIPLE</span>
+            <span class="takeaway-text-bold">Strategic vision is not micromanagement — it is providing direction and empowering the team to build the route.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 6: Trait 2 - Strong Customer/People Focus (Zoid)
+           ==================================================================== -->
+      <section class="slide" id="slide-6" data-slide="6" data-presenter="Zoid" data-title="Trait 2: Customer / People Focus">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 02 &bull; Connection</div>
+            <h2 class="slide-big-title">Have a Strong Customer/People Focus</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Zoid</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-2-col">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Accessing People's Thoughts</div>
+              <ul class="big-bullet-list">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">1</span>
+                  <span><strong>Ongoing Relationships:</strong> Continually asking what stakeholders need, feel, and experience.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">2</span>
+                  <span><strong>Empathy Before Conclusions:</strong> Listening first to uncover root causes before making administrative judgments.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">3</span>
+                  <span><strong>Classroom Context:</strong> Innovative teachers seek to understand a student's personal circumstances before evaluating performance.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; padding: 12px;">
+              <img src="people-focus.png" alt="Empathetic Teacher & Student Discussion" style="max-height: 250px; width: auto; max-width: 100%; object-fit: contain; display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">TAKEAWAY</span>
+            <span class="takeaway-text-bold">You cannot innovate for people without understanding what they genuinely experience every day.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 7: Trait 3 - Reciprocal Trust (Zoid)
+           ==================================================================== -->
+      <section class="slide" id="slide-7" data-slide="7" data-presenter="Zoid" data-title="Trait 3: Reciprocal Trust">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 03 &bull; Psychological Safety</div>
+            <h2 class="slide-big-title">Create a Climate of Reciprocal Trust</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Zoid</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Mutual Safety Net for Risk-Taking</div>
+              <p class="card-body-text">Innovation inherently involves <strong>risk</strong>. If team members fear punishment for mistakes, experimentation ceases entirely.</p>
+              
+              <ul class="big-bullet-list" style="margin-top: 14px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">↔</span>
+                  <span><strong>"Reciprocal" Means Mutual:</strong> A two-way street — the leader trusts the team's initiative, and the team trusts the leader's protection.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">🛡</span>
+                  <span><strong>Covering Their Backs:</strong> Leaders shield their members rather than throwing them under the bus when errors happen.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>The Standard:</strong> <em>"People are never penalized for making a genuine mistake."</em></span>
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; padding: 20px;">
+              <img src="reciprocal-trust.png" alt="Reciprocal Trust Handshake" style="max-height: 240px; width: auto; max-width: 100%; object-fit: contain; display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">KEY INSIGHT</span>
+            <span class="takeaway-text-bold">Psychological safety is the bedrock of creativity — when fear of error is removed, breakthrough ideas thrive.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 8: Trait 4 - Upward Communication (Nhevie Mea)
+           ==================================================================== -->
+      <section class="slide" id="slide-8" data-slide="8" data-presenter="Nhevie Mea" data-title="Trait 4: Upward Communication">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 04 &bull; Open Ideas</div>
+            <h2 class="slide-big-title">Magnify Upward Communication</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Nhevie Mea</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-2-col">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Ideas Bubble Up from Beneath</div>
+              <p class="card-body-text">Innovative leaders believe the most inventive ideas emerge from grassroots levels — from frontline personnel and students directly doing the work.</p>
+              
+              <div class="layout-2-col" style="margin-top: 16px; gap: 12px;">
+                <div class="solid-card" style="padding: 14px;">
+                  <strong style="font-size: 1.05rem; display:block; margin-bottom: 4px;">⚡ Energy & Positivity</strong>
+                  <p class="card-body-text" style="font-size: 0.95rem;">Projecting an approachable spirit that welcomes open input.</p>
+                </div>
+                <div class="solid-card" style="padding: 14px;">
+                  <strong style="font-size: 1.05rem; display:block; margin-bottom: 4px;">😄 Humor & Warmth</strong>
+                  <p class="card-body-text" style="font-size: 0.95rem;">Dispelling gloomy atmospheres that silence quiet contributors.</p>
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
+              <img src="upward-ideas.png" alt="Upward Communication Ideas Bubbling Up" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">PRINCIPLE</span>
+            <span class="takeaway-text-bold">Great leaders do not just transmit orders; they construct open channels for bottom-up insight.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 9: Trait 5 - Persuasiveness (Nhevie Mea)
+           ==================================================================== -->
+      <section class="slide" id="slide-9" data-slide="9" data-presenter="Nhevie Mea" data-title="Trait 5: Persuasiveness">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 05 &bull; Influence</div>
+            <h2 class="slide-big-title">Are Persuasive (Passion Over Power)</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Nhevie Mea</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Influence Through Zeal & Conviction</div>
+              <p class="card-body-text">Persuasion is not manipulation or commanding authority. In innovative leadership, it is driven by contagious enthusiasm:</p>
+              
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 14px;">
+                <div class="solid-card" style="padding: 14px;">
+                  <strong>❌ What They Avoid:</strong> They do <em>not</em> impose, mandate, or coerce compliance through positional power.
+                </div>
+                <div class="solid-card" style="padding: 14px; background: #ffffff;">
+                  <strong>✅ What They Do:</strong> They present concepts with <em>zeal (intense enthusiasm)</em> so the team is genuinely inspired.
+                </div>
+              </div>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
+              <img src="persuasive-speaker.jpg" alt="Inspiring Public Speaker" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">TAKEAWAY</span>
+            <span class="takeaway-text-bold">True persuasion wins minds and hearts through genuine conviction rather than forced compliance.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 10: Trait 6 - Stretch Goals (Nhevie Mea)
+           ==================================================================== -->
+      <section class="slide" id="slide-10" data-slide="10" data-presenter="Nhevie Mea" data-title="Trait 6: Stretch Goals">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 06 &bull; High Standards</div>
+            <h2 class="slide-big-title">Excel at Setting Stretch Goals</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Nhevie Mea</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-2-col">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Pushing Beyond the Comfort Zone</div>
+              <ul class="big-bullet-list">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">1</span>
+                  <span><strong>Not Just "Overworking":</strong> A stretch goal is not demanding 20% more overtime hours on existing routines.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">2</span>
+                  <span><strong>Forces Novel Approaches:</strong> The target is high enough that routine habits fail — compelling the team to invent new systems.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">3</span>
+                  <span><strong>Classroom Example:</strong> Instead of studying just to pass, creating a project so good the faculty adopts it as an exemplar.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
+              <img src="stretch-goals.jpg" alt="Setting Stretch Goals Bullseye" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">PRINCIPLE</span>
+            <span class="takeaway-text-bold">Stretch goals spark innovation: when routine methods can't reach the goal, people are forced to invent new ones.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 11: Trait 7 - Candid Communication (Nhevie Mea)
+           ==================================================================== -->
+      <section class="slide" id="slide-11" data-slide="11" data-presenter="Nhevie Mea" data-title="Trait 7: Candid Communication">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 07 &bull; Transparency</div>
+            <h2 class="slide-big-title">Are Candid in Their Communication</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Nhevie Mea</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Straight Answers & Direct Critique</div>
+              <p class="card-body-text"><strong>"Candid"</strong> means being open, honest, and straightforward — speaking the truth without hiding behind sugarcoated words.</p>
+              
+              <ul class="big-bullet-list" style="margin-top: 14px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>Clear Standing:</strong> Subordinates always know where they stand — no guesswork or hidden agendas.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>Direct Feedback as Care:</strong> Honest critiques are the fastest catalyst for personal and professional growth.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>Long-Term Trust:</strong> People deeply respect leaders who provide direct truth over hollow compliments.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
+              <img src="candid-feedback.png" alt="Candid Communication Feedback Dialogue" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">KEY INSIGHT</span>
+            <span class="takeaway-text-bold">Clear is kind. Candid communication strengthens relationships by removing guesswork and politics.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 12: Trait 8 - Inspire by Action (Steven Benedict)
+           ==================================================================== -->
+      <section class="slide" id="slide-12" data-slide="12" data-presenter="Steven Benedict" data-title="Trait 8: Inspire Through Action">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Trait 08 &bull; Living Example</div>
+            <h2 class="slide-big-title">Inspire and Motivate Through Action</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Steven Benedict</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-2-col">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Leading from the Front</div>
+              <ul class="big-bullet-list">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">1</span>
+                  <span><strong>Purpose Fuels Drive:</strong> Innovation requires deep motivation, rooted in a strong sense of significance in one's work.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">2</span>
+                  <span><strong>Hands-On Commitment:</strong> Leaders don't just lecture about innovation — they roll up their sleeves and lead the charge.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">3</span>
+                  <span><strong>Inspirational Contagion:</strong> When teams witness their leader's active dedication, their own commitment is ignited.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 220px;">
+              <img src="inspire-action.png" alt="Inspire and Motivate Through Action" style="width: 100%; height: 100%; object-fit: cover; object-position: center; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">CORE TRUTH</span>
+            <span class="takeaway-text-bold">Leadership is not about titles — it is about demonstrating dedication through visible, purposeful action.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 13: Summary Table (Steven Benedict)
+           ==================================================================== -->
+      <section class="slide" id="slide-13" data-slide="13" data-presenter="Steven Benedict" data-title="8 Traits at a Glance">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Summary Matrix</div>
+            <h2 class="slide-big-title">The 8 Traits at a Glance</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Steven Benedict</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <table class="matrix-table-large">
+            <thead>
+              <tr>
+                <th style="width: 8%;">No.</th>
+                <th style="width: 25%;">Trait</th>
+                <th style="width: 18%;">Keyword</th>
+                <th style="width: 49%;">Core Principle</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>01</strong></td>
+                <td><strong>🔭 Strategic Vision</strong></td>
+                <td><strong style="color: var(--accent-terracotta);">VISION</strong></td>
+                <td>Articulate the destination clearly; let the team build the pathway.</td>
+              </tr>
+              <tr>
+                <td><strong>02</strong></td>
+                <td><strong>👥 People Focus</strong></td>
+                <td><strong style="color: var(--accent-navy);">FOCUS</strong></td>
+                <td>Continually uncover stakeholder needs and empathize with students.</td>
+              </tr>
+              <tr>
+                <td><strong>03</strong></td>
+                <td><strong>🛡️ Reciprocal Trust</strong></td>
+                <td><strong style="color: var(--accent-forest);">TRUST</strong></td>
+                <td>Two-way safety net; never penalize genuine errors.</td>
+              </tr>
+              <tr>
+                <td><strong>04</strong></td>
+                <td><strong>⬆️ Upward Communication</strong></td>
+                <td><strong style="color: var(--accent-ochre);">UPWARD</strong></td>
+                <td>Encourage inventive solutions to bubble up from frontline staff.</td>
+              </tr>
+              <tr>
+                <td><strong>05</strong></td>
+                <td><strong>🎤 Persuasiveness</strong></td>
+                <td><strong style="color: var(--accent-terracotta);">PERSUASIVE</strong></td>
+                <td>Influence through zeal and conviction, never coercion.</td>
+              </tr>
+              <tr>
+                <td><strong>06</strong></td>
+                <td><strong>🏔️ Stretch Goals</strong></td>
+                <td><strong style="color: var(--accent-navy);">GOALS</strong></td>
+                <td>Set ambitious targets that demand novel methods.</td>
+              </tr>
+              <tr>
+                <td><strong>07</strong></td>
+                <td><strong>💬 Candid Communication</strong></td>
+                <td><strong style="color: var(--accent-forest);">CANDID</strong></td>
+                <td>Deliver direct truth so everyone knows exactly where they stand.</td>
+              </tr>
+              <tr>
+                <td><strong>08</strong></td>
+                <td><strong>🚀 Inspire Through Action</strong></td>
+                <td><strong style="color: var(--accent-ochre);">ACTION</strong></td>
+                <td>Lead with purpose by modeling dedication in practice.</td>
+              </tr>
+            </tbody>
+          </table>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">TRANSITION</span>
+            <span class="takeaway-text-bold">These 8 traits are learnable practices. Next, we examine how leadership is objectively assessed.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 14: Leadership Assessment Definition (Steven Benedict)
+           ==================================================================== -->
+      <section class="slide" id="slide-14" data-slide="14" data-presenter="Steven Benedict" data-title="Leadership Assessment: Definition">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Diagnostic Evaluation</div>
+            <h2 class="slide-big-title">What Is Leadership Assessment?</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Steven Benedict</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm">
+              <div class="card-heading-large">Formal Academic Definition</div>
+              <div class="quote-box-solid">
+                "Leadership Assessment is the process of identifying and evaluating the distinctive characteristics of an individual's ability to lead, manage, and direct teams or individuals, as well as how these characteristics fit into the criteria of a given job in an organization."
+              </div>
+              <p class="card-body-text">It objectively examines <strong>competencies (skills)</strong>, readiness, and <strong>inadequacies (gaps)</strong> from an external standard.</p>
+            </div>
+
+            <div class="solid-card">
+              <div class="card-heading-large">3 Decisions It Powers</div>
+              <ul class="big-bullet-list" style="margin-top: 10px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">1</span>
+                  <span><strong>Selection:</strong> Matching right leaders to distinct organizational demands.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">2</span>
+                  <span><strong>Placement:</strong> Deploying strengths where they create maximum impact.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">3</span>
+                  <span><strong>Development:</strong> Formulating targeted coaching to overcome gaps.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">CORE QUESTIONS</span>
+            <span class="takeaway-text-bold">Assessment answers: Can this person lead? How effectively? And in what specific capacity?</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 15: Importance of Assessment (Steven Benedict)
+           ==================================================================== -->
+      <section class="slide" id="slide-15" data-slide="15" data-presenter="Steven Benedict" data-title="Importance of Leadership Assessment">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Diagnostic Value</div>
+            <h2 class="slide-big-title">The Importance of Leadership Assessment</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Steven Benedict</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-2-col">
+            <div class="solid-card tint">
+              <div class="card-heading-large">"No Leader Is Flawless"</div>
+              <div class="quote-box-solid">
+                "Leadership evaluation tells you where you are in relation to ideal standards. No leader is flawless. Every person possesses attributes that define a leader — not everyone possesses all of them."
+              </div>
+              <p class="card-body-text">Assessment replaces subjective guesswork with a <strong>reliable feedback mechanism</strong>.</p>
+            </div>
+
+            <div class="solid-card warm">
+              <div class="card-heading-large">Discovering Latent Potential</div>
+              <ul class="big-bullet-list">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>"Latent" Means Hidden:</strong> Reveals unapplied talents an individual may not realize they have.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>Holistic Value:</strong> Enhances capacities applicable across school, community, and career.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>Balanced Growth:</strong> Builds on strengths while addressing vulnerable blind spots.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">TAKEAWAY</span>
+            <span class="takeaway-text-bold">Assessment is not a test to fail — it is a compass that illuminates where you stand and charts your growth path.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 16: Key Benefits (Thrie Jie)
+           ==================================================================== -->
+      <section class="slide" id="slide-16" data-slide="16" data-presenter="Thrie Jie" data-title="Key Benefits of Assessment">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Dual Impact</div>
+            <h2 class="slide-big-title">Two Key Benefits of Leadership Assessment</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Thrie Jie</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-2-col">
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-navy); font-weight: 800; margin-bottom: 4px;">PILLAR 01</div>
+              <div class="card-heading-large">Guides Career Goals</div>
+              <ul class="big-bullet-list" style="margin-top: 10px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">🧭</span>
+                  <span>Provides an <strong>unbiased picture</strong> of capabilities across any career stage.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">🎯</span>
+                  <span>Identifies <em>where</em> you want to go and builds the roadmap on <em>how</em> to get there.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">📚</span>
+                  <span>Pinpoints needed certifications, training, and real-world leadership experiences.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-forest); font-weight: 800; margin-bottom: 4px;">PILLAR 02</div>
+              <div class="card-heading-large">Optimizes Self-Awareness</div>
+              <ul class="big-bullet-list" style="margin-top: 10px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">🪞</span>
+                  <span>Evaluates personality habits essential for managing teams respectfully.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">🤝</span>
+                  <span>Strengthens interpersonal competence in diverse educational settings.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">🛠️</span>
+                  <span>Enables <strong>coordinated development</strong> — fixing specific gaps instead of guessing.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">SYNTHESIS</span>
+            <span class="takeaway-text-bold">Assessment bridges who you are today (Self-Awareness) with who you will become tomorrow (Career Goals).</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 17: Self-Assessment & Vulnerabilities (Thrie Jie)
+           ==================================================================== -->
+      <section class="slide" id="slide-17" data-slide="17" data-presenter="Thrie Jie" data-title="Self-Assessment & Remedial Measures">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Personal Growth</div>
+            <h2 class="slide-big-title">Self-Assessment & Remedial Measures</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Thrie Jie</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm">
+              <div class="card-heading-large">The Remedial Action Cycle</div>
+              <p class="card-body-text"><strong>"Remedial measures"</strong> are proactive corrective actions leaders take to actively <strong>reinforce strengths</strong> and <strong>overcome deficiencies</strong>.</p>
+              
+              <ul class="big-bullet-list" style="margin-top: 14px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">📈</span>
+                  <span><strong>Monitor Personal Progress:</strong> Tracking growth over time keeps leaders self-accountable.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">🗺️</span>
+                  <span><strong>Futuristic Development:</strong> Preparing today for future leadership responsibilities.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="solid-card tint">
+              <div class="card-heading-large">Core Qualities to Hone</div>
+              <div style="display: flex; flex-direction: column; gap: 10px; margin-top: 10px;">
+                <div class="solid-card" style="padding: 12px;">
+                  <strong style="font-size: 1.05rem;">🕊️ Diplomacy:</strong> Handling sensitive challenges tactfully.
+                </div>
+                <div class="solid-card" style="padding: 12px;">
+                  <strong style="font-size: 1.05rem;">🚶‍♂️ Living by Example:</strong> Integrity and consistency in action.
+                </div>
+                <div class="solid-card" style="padding: 12px;">
+                  <strong style="font-size: 1.05rem;">❤️ Empathy:</strong> Deep interpersonal and emotional intelligence.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">KEY LESSON</span>
+            <span class="takeaway-text-bold">Knowing your weaknesses is only half the battle — true leadership intelligence lies in taking concrete remedial steps.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 18: 5 Advantages of Self-Assessment (Thrie Jie)
+           ==================================================================== -->
+      <section class="slide" id="slide-18" data-slide="18" data-presenter="Thrie Jie" data-title="5 Advantages of Self-Assessment">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Lifelong Growth Engine</div>
+            <h2 class="slide-big-title">5 Advantages of Self-Assessment</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Thrie Jie</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-3-col">
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-terracotta); font-weight: 800;">ADVANTAGE 01</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 8px;">Source of Motivation</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Tracks milestones like a fitness tracker for leadership, energizing continuous progress.</p>
+            </div>
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-navy); font-weight: 800;">ADVANTAGE 02</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 8px;">Competency Feedback</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Delivers clear data on whether targeted leadership capacities have actually improved.</p>
+            </div>
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-forest); font-weight: 800;">ADVANTAGE 03</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 8px;">Promotes Self-Awareness</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Provides an honest accounting of strengths and vulnerable blind spots.</p>
+            </div>
+          </div>
+
+          <div class="layout-2-col">
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-ochre); font-weight: 800;">ADVANTAGE 04</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 8px;">Hones Inspirational Qualities</div>
+              <p class="card-body-text" style="font-size: 0.95rem;"><em>"Hones" means to sharpen</em> — refining self-awareness directly elevates your ability to inspire others.</p>
+            </div>
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-terracotta); font-weight: 800;">ADVANTAGE 05</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 8px;">Drives Development Plans</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Translates aspirations into concrete benchmarks for superior performance.</p>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">PRINCIPLE</span>
+            <span class="takeaway-text-bold">Self-assessment is not a one-time test — it is a continuous engine for lifelong leadership evolution.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 19: Henry Sy Case Study Intro & Portrait (Thrie Jie)
+           ==================================================================== -->
+      <section class="slide" id="slide-19" data-slide="19" data-presenter="Thrie Jie" data-title="Case Example: Henry Sy (Intro)">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Real-World Case Study</div>
+            <h2 class="slide-big-title">Henry Sy Sr. (1924–2019)</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Thrie Jie</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 250px;">
+              <img src="henry-sy.png" alt="Henry Sy Sr. Portrait" style="width: 100%; height: 100%; object-fit: cover; object-position: center top; border-radius: var(--radius-md); display: block;" />
+            </div>
+
+            <div class="solid-card warm" style="display: flex; flex-direction: column; justify-content: center; gap: 14px;">
+              <div class="card-heading-large" style="font-size: 1.4rem;">A Living Masterclass in Leadership</div>
+              <p class="card-body-text" style="font-size: 1.15rem;">Henry Sy’s life is a masterclass in applying the exact traits of innovative leaders: resilience through crisis, bold strategic vision, and deep dedication to service.</p>
+              
+              <div class="quote-box-solid" style="font-size: 1.25rem;">
+                "It is not wealth that makes a man but his morals."
+                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-light); margin-top: 6px;">&mdash; Henry Sy Sr.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">NEXT UP</span>
+            <span class="takeaway-text-bold">Let’s examine how Henry Sy demonstrated the 3 core pillars of innovative leadership.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 20: Henry Sy Case Study Pillars (Thrie Jie)
+           ==================================================================== -->
+      <section class="slide" id="slide-20" data-slide="20" data-presenter="Thrie Jie" data-title="Case Example: Henry Sy (3 Pillars)">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Historical Case Chronicle</div>
+            <h2 class="slide-big-title">Case Study: Henry Sy Sr. (3 Pillars)</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Thrie Jie</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-3-col">
+            <div class="solid-card tint">
+              <div class="card-heading-large" style="font-size: 1.15rem;">1. Willpower & Resilience</div>
+              <ul class="big-bullet-list" style="font-size: 0.92rem; gap: 8px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Worked since <strong>age 12</strong> helping family survive.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span><strong>WWII Shrapnel Wound:</strong> Injured in the leg by bomb debris; rushed to safety on a wooden <em>kariton</em> (pushcart) by a friend.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Opened first store in <strong>1972</strong> — 2 months after Martial Law.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Persevered through 1980s debt moratorium, hyper-inflation, and unrest.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="solid-card warm">
+              <div class="card-heading-large" style="font-size: 1.15rem;">2. Innovativeness & Vision</div>
+              <ul class="big-bullet-list" style="font-size: 0.92rem; gap: 8px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Pioneered the <strong>1st air-conditioned shoe store</strong> in a fashionable format.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Constructed landmark shopping centers, including <strong>SM Mall of Asia</strong>.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Diversified into supermarkets, appliances, banking (BDO), and real estate.</span>
+                </li>
+              </ul>
+            </div>
+
+            <div class="solid-card warm">
+              <div class="card-heading-large" style="font-size: 1.15rem;">3. Social Responsibility</div>
+              <ul class="big-bullet-list" style="font-size: 0.92rem; gap: 8px;">
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Funded thousands of college scholarships for underprivileged youth.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Donated public school buildings, classrooms, and libraries.</span>
+                </li>
+                <li class="big-bullet-item">
+                  <span class="bullet-num-circle">✦</span>
+                  <span>Promoted environmental eco-bags and assisted disaster victims.</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="quote-box-solid" style="text-align: center; font-size: 1.15rem; margin: 4px 0;">
+            "It is not wealth that makes a man but his morals." &mdash; Henry Sy Sr.
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 21: Key Takeaways (Yuri Neil)
+           ==================================================================== -->
+      <section class="slide" id="slide-21" data-slide="21" data-presenter="Yuri Neil" data-title="Key Takeaways">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Synthesis</div>
+            <h2 class="slide-big-title">Key Takeaways: Module 2 Summary</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Yuri Neil</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-3-col">
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-terracotta); font-weight: 800;">01</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 6px;">The 8 HBR Traits</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Vision, people focus, trust, upward communication, persuasiveness, stretch goals, candor, and action form the bedrock of innovation.</p>
+            </div>
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-navy); font-weight: 800;">02</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 6px;">Objective Assessment</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Evaluates competencies and gaps from an external standard to guide selection, placement, and development.</p>
+            </div>
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-forest); font-weight: 800;">03</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 6px;">No Leader is Flawless</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Everyone possesses latent leadership attributes; assessment illuminates blind spots to chart a deliberate roadmap.</p>
+            </div>
+          </div>
+
+          <div class="layout-3-col">
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-ochre); font-weight: 800;">04</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 6px;">Self-Assessment Engine</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Continuous self-evaluation motivates leaders, delivers feedback, and fuels proactive remedial development.</p>
+            </div>
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-terracotta); font-weight: 800;">05</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 6px;">Real-World Proof</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Henry Sy proves that willpower, customer-centric innovation, and moral responsibility translate directly into historical success.</p>
+            </div>
+            <div class="solid-card warm">
+              <div style="font-family: var(--font-mono); font-size: 0.8rem; color: var(--accent-navy); font-weight: 800;">06</div>
+              <div class="card-heading-large" style="font-size: 1.15rem; margin: 4px 0 6px;">Leadership is Learnable</div>
+              <p class="card-body-text" style="font-size: 0.95rem;">Innovative leadership intelligence is not an innate gift — it is a deliberate discipline developed through continuous practice.</p>
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">FINAL PRINCIPLE</span>
+            <span class="takeaway-text-bold">Innovative leadership begins with self-awareness, flourishes with trust, and achieves greatness through purposeful action.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 22: Closing Reflection (Yuri Neil)
+           ==================================================================== -->
+      <section class="slide" id="slide-22" data-slide="22" data-presenter="Yuri Neil" data-title="Closing Reflection">
+        <div class="slide-header-bar">
+          <div>
+            <div class="slide-sub-kicker">Final Reflection</div>
+            <h2 class="slide-big-title">Remember: You Can Be a Leader!</h2>
+          </div>
+          <span class="speaker-tag-solid">Speaker: Yuri Neil</span>
+        </div>
+
+        <div class="slide-main-canvas">
+          <div class="layout-55-45">
+            <div class="solid-card warm">
+              <div class="card-heading-large">In the Process of Becoming</div>
+              <div class="quote-box-solid">
+                "Did you enjoy discovering your leadership skills and attributes? YOU CAN BE A LEADER! You can further grow in areas where you find yourself weak. Don't give up on your journey to becoming the great leader you can be."
+              </div>
+              <p class="card-body-text">Leadership is not a title you reach and stop. It is a <strong>lifelong, continuous journey</strong> of self-awareness, empathy, and deliberate improvement.</p>
+            </div>
+
+            <div style="background: #ffffff; border-radius: var(--radius-md); overflow: hidden; box-shadow: var(--shadow-clean); display: flex; align-items: center; justify-content: center; height: 100%; min-height: 250px;">
+              <img src="student-leaders.png" alt="Future Student Leaders" style="width: 100%; height: 100%; object-fit: cover; object-position: center 20%; border-radius: var(--radius-md); display: block;" />
+            </div>
+          </div>
+
+          <div class="takeaway-pill-banner">
+            <span class="takeaway-badge-tag">FINAL PRINCIPLE</span>
+            <span class="takeaway-text-bold">Leadership is not an innate gift — it is a continuous journey of growth, trust, and purposeful action.</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ====================================================================
+           SLIDE 23: Dedicated Thank You & Q&A (Yuri Neil)
+           ==================================================================== -->
+      <section class="slide" id="slide-23" data-slide="23" data-presenter="Yuri Neil" data-title="Thank You & Q&A">
+        <div class="slide-main-canvas" style="justify-content: center; align-items: center; text-align: center; gap: 20px;">
+          <img src="f58ef8e5-7ef1-4e0f-af61-e662a0278a29.png" alt="Logo" style="height: 100px; width: 100px; object-fit: contain; filter: brightness(0);" />
+          
+          <div>
+            <h1 style="font-family: var(--font-display); font-size: 3.6rem; font-weight: 900; color: var(--text-dark); line-height: 1.1; margin-bottom: 8px;">Thank You for Listening!</h1>
+            <p style="font-size: 1.25rem; color: var(--text-muted); max-width: 680px; margin: 0 auto 18px;">We hope this presentation inspired you to reflect, assess your capacities, and step boldly into your leadership journey.</p>
+          </div>
+
+          <div style="background: var(--bg-card-warm); padding: 14px 32px; border-radius: var(--radius-full); display: inline-flex; align-items: center; gap: 10px; box-shadow: var(--shadow-clean);">
+            <span style="font-family: var(--font-mono); font-size: 1.6rem; font-weight: 800; color: var(--accent-terracotta); letter-spacing: 0.5px;">Any questions? 💬</span>
+          </div>
+
+          <div style="margin-top: 10px;">
+            <span class="roster-chip" style="font-size: 0.95rem; padding: 6px 18px; background: #ffffff; color: var(--text-dark);">Group 2 Presentation &bull; IS 103</span>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- Bottom Navigation Bar -->
+  <footer class="bottom-bar">
+    <div style="display: flex; gap: 16px;">
+      <span>Nav: <span class="kbd-pill">◀</span> / <span class="kbd-pill">▶</span> / <span class="kbd-pill">Space</span></span>
+      <span>Index: <span class="kbd-pill">S</span></span>
+      <span>Fullscreen: <span class="kbd-pill">F</span></span>
+    </div>
+    <div>IS 103 &bull; Group 2 Study Deck</div>
+  </footer>
+
+  <!-- Slide Index Drawer (S Key) -->
+  <div class="overlay-modal-frame" id="drawerOverlay">
+    <div class="drawer-paper-doc">
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
+        <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--text-dark);">📑 Presentation Index</h3>
+        <button class="btn-close-x" style="color: var(--text-dark);" onclick="toggleDrawerModal()">&times;</button>
+      </div>
+      <div class="drawer-grid-container" id="drawerGrid"></div>
+    </div>
+  </div>
+
+</div>
+
+<!-- JavaScript State & Controller -->
+<script>
+  let currentSlide = 1;
+  const totalSlides = 23;
+  let isDrawerOpen = false;
+
+  const slideCounter = document.getElementById("slideCounter");
+  const progressFill = document.getElementById("progressFill");
+  const currentPresenterName = document.getElementById("currentPresenterName");
+  const drawerOverlay = document.getElementById("drawerOverlay");
+
+  function goToSlide(slideNum) {
+    if (slideNum < 1 || slideNum > totalSlides) return;
+    
+    const prevSlideEl = document.getElementById(`slide-${currentSlide}`);
+    if (prevSlideEl) prevSlideEl.classList.remove("active");
+
+    currentSlide = slideNum;
+
+    const currentSlideEl = document.getElementById(`slide-${currentSlide}`);
+    if (currentSlideEl) currentSlideEl.classList.add("active");
+
+    const formattedNum = currentSlide < 10 ? `0${currentSlide}` : currentSlide;
+    slideCounter.textContent = `${formattedNum} / ${totalSlides}`;
+    const percent = (currentSlide / totalSlides) * 100;
+    progressFill.style.width = `${percent}%`;
+
+    const presenter = currentSlideEl && currentSlideEl.dataset.presenter ? currentSlideEl.dataset.presenter : "Jericho";
+    currentPresenterName.textContent = presenter.toUpperCase();
+
+    updateDrawerActive();
+  }
+
+  function nextSlide() {
+    if (currentSlide < totalSlides) goToSlide(currentSlide + 1);
+  }
+
+  function prevSlide() {
+    if (currentSlide > 1) goToSlide(currentSlide - 1);
+  }
+
+  function toggleDrawerModal() {
+    isDrawerOpen = !isDrawerOpen;
+    if (isDrawerOpen) {
+      drawerOverlay.classList.add("active");
+    } else {
+      drawerOverlay.classList.remove("active");
+    }
+  }
+
+  function buildDrawerGrid() {
+    const grid = document.getElementById("drawerGrid");
+    grid.innerHTML = "";
+    for (let i = 1; i <= totalSlides; i++) {
+      const slideEl = document.getElementById(`slide-${i}`);
+      const title = slideEl ? slideEl.dataset.title : `Slide ${i}`;
+      const presenter = slideEl && slideEl.dataset.presenter ? slideEl.dataset.presenter.toUpperCase() : "MODULE 2";
+      const div = document.createElement("div");
+      div.className = `drawer-tile-btn ${i === currentSlide ? 'active' : ''}`;
+      div.id = `drawer-item-${i}`;
+      div.onclick = () => {
+        goToSlide(i);
+        toggleDrawerModal();
+      };
+      div.innerHTML = `
+        <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight:800; color: var(--accent-terracotta);">SLIDE ${i < 10 ? '0' + i : i}</div>
+        <div style="font-family: var(--font-display); font-size: 0.92rem; font-weight:800; color: inherit; margin-top:2px;">${title}</div>
+        <div class="tile-sub" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-light); margin-top: 4px;">TOPIC: ${presenter}</div>
+      `;
+      grid.appendChild(div);
+    }
+  }
+
+  function updateDrawerActive() {
+    for (let i = 1; i <= totalSlides; i++) {
+      const el = document.getElementById(`drawer-item-${i}`);
+      if (el) {
+        if (i === currentSlide) el.classList.add("active");
+        else el.classList.remove("active");
+      }
+    }
+  }
+
+  function toggleFullscreen() {
+    if (!document.fullscreenElement) {
+      document.documentElement.requestFullscreen().catch(err => {
+        console.warn("Fullscreen request error:", err);
+      });
+    } else {
+      if (document.exitFullscreen) document.exitFullscreen();
+    }
+  }
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight" || e.key === "PageDown" || e.key === " ") {
+      e.preventDefault();
+      nextSlide();
+    } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
+      e.preventDefault();
+      prevSlide();
+    } else if (e.key === "s" || e.key === "S") {
+      toggleDrawerModal();
+    } else if (e.key === "f" || e.key === "F") {
+      toggleFullscreen();
+    } else if (e.key === "Escape") {
+      if (isDrawerOpen) toggleDrawerModal();
+    }
+  });
+
+  document.getElementById("btnNext").addEventListener("click", nextSlide);
+  document.getElementById("btnPrev").addEventListener("click", prevSlide);
+  document.getElementById("btnDrawer").addEventListener("click", toggleDrawerModal);
+  document.getElementById("btnFullscreen").addEventListener("click", toggleFullscreen);
+
+  drawerOverlay.addEventListener("click", (e) => {
+    if (e.target === drawerOverlay) toggleDrawerModal();
+  });
+
+  buildDrawerGrid();
+  goToSlide(1);
+
+  // Register PWA Service Worker for 100% Offline Access
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', () => {
+      navigator.serviceWorker.register('./sw.js')
+        .then((reg) => console.log('[PWA] Service Worker active for offline use:', reg.scope))
+        .catch((err) => console.log('[PWA] Service Worker registration failed:', err));
+    });
+  }
+</script>
+
+</body>
+</html>
