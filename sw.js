@@ -1,10 +1,13 @@
-const CACHE_NAME = 'innovative-leadership-pwa-v2';
+const CACHE_NAME = 'innovative-leadership-pwa-v3';
 
 const ASSETS_TO_CACHE = [
   './',
   './index.html',
   './study.html',
   './manifest.json',
+  './fonts/outfit.woff2',
+  './fonts/plus-jakarta-sans.woff2',
+  './fonts/space-grotesk.woff2',
   './f58ef8e5-7ef1-4e0f-af61-e662a0278a29.png',
   './head.png',
   './Stages-of-learning-transparent.png',
