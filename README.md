@@ -27,6 +27,14 @@ Bukidnon State University • College of Arts and Sciences
 
 ---
 
+## 🌐 Live Web Deployments
+* **📖 Classmate Study Deck (23 Slides):** [innovative-leadership-study.vercel.app](https://innovative-leadership-study.vercel.app)  
+  *(Safe to share with the whole class — contains zero presenter notes and no game content)*
+* **🎤 Presenter Master Deck (25 Slides):** [innovative-leadership-three.vercel.app](https://innovative-leadership-three.vercel.app)  
+  *(Team-only version with full speaker scripts, cue cards, and interactive game)*
+
+---
+
 ## 📂 Available Deck Versions
 1. **`index.html` (Presenter Master Deck):**
    * Includes full spoken speaker scripts / cue cards modal (`N` key).
@@ -36,6 +44,7 @@ Bukidnon State University • College of Arts and Sciences
    * Stripped of all speaker notes, scripts, and competition game slides.
    * 23 pure academic review slides directly transitioning from *Henry Sy* to *Key Takeaways*.
    * Full keyboard navigation (`◀` / `▶` / `Space`), Slide Index Drawer (`S`), and Fullscreen (`F`).
+   * Self-hosted modern fonts (`fonts/*.woff2`) ensuring 100% typography fidelity online and offline.
 
 ---
 
