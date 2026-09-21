@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Module 2: Characteristics of Innovative Leaders (Study Deck) | IS 103</title>
+  <title>Module 2: Characteristics of Innovative Leaders (Screenshot Deck) | IS 103</title>
   
   <!-- PWA & Offline Support -->
   <link rel="manifest" href="manifest.json" />
@@ -218,17 +218,16 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 16px;
+      padding: 20px;
       position: relative;
       overflow: hidden;
     }
 
     .slide-viewport {
-      width: 1260px;
-      height: 708px;
+      width: 1320px;
       max-width: 100%;
-      max-height: 100%;
       aspect-ratio: 16 / 9;
+      max-height: 100%;
       background: var(--bg-slide);
       border-radius: var(--radius-lg);
       box-shadow: 0 20px 40px rgba(0,0,0,0.5);
@@ -1039,29 +1038,6 @@
     .drawer-tile-btn:hover .tile-sub, .drawer-tile-btn.active .tile-sub {
       color: #d1d5db;
     }
-
-    /* Bottom Quick Status */
-    .bottom-bar {
-      height: 48px;
-      background: #111827;
-      border-top: 1px solid rgba(255,255,255,0.08);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 24px;
-      color: #9ca3af;
-      font-size: 0.82rem;
-      font-family: var(--font-mono);
-    }
-
-    .kbd-pill {
-      background: #1f2937;
-      border: 1px solid #374151;
-      color: #f3f4f6;
-      padding: 2px 7px;
-      border-radius: 4px;
-      font-size: 0.8rem;
-    }
   </style>
 </head>
 <body>
@@ -1084,8 +1060,6 @@
       <button class="btn-top" id="btnPrev" title="Previous Slide (Left Arrow)">◀ PREV</button>
       <div class="slide-num-box" id="slideCounter">01 / 23</div>
       <button class="btn-top" id="btnNext" title="Next Slide (Right Arrow or Space)">NEXT ▶</button>
-      <button class="btn-top" id="btnDrawer" title="Slide Index (S Key)">📑 INDEX [S]</button>
-      <button class="btn-top" id="btnFullscreen" title="Fullscreen (F Key)">⛶</button>
     </div>
   </header>
 
@@ -2253,39 +2227,16 @@
     </div>
   </main>
 
-  <!-- Bottom Navigation Bar -->
-  <footer class="bottom-bar">
-    <div style="display: flex; gap: 16px;">
-      <span>Nav: <span class="kbd-pill">◀</span> / <span class="kbd-pill">▶</span> / <span class="kbd-pill">Space</span></span>
-      <span>Index: <span class="kbd-pill">S</span></span>
-      <span>Fullscreen: <span class="kbd-pill">F</span></span>
-    </div>
-    <div>IS 103 &bull; Group 2 Study Deck</div>
-  </footer>
-
-  <!-- Slide Index Drawer (S Key) -->
-  <div class="overlay-modal-frame" id="drawerOverlay">
-    <div class="drawer-paper-doc">
-      <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 14px;">
-        <h3 style="font-family: var(--font-display); font-size: 1.35rem; color: var(--text-dark);">📑 Presentation Index</h3>
-        <button class="btn-close-x" style="color: var(--text-dark);" onclick="toggleDrawerModal()">&times;</button>
-      </div>
-      <div class="drawer-grid-container" id="drawerGrid"></div>
-    </div>
-  </div>
-
 </div>
 
 <!-- JavaScript State & Controller -->
 <script>
   let currentSlide = 1;
   const totalSlides = 23;
-  let isDrawerOpen = false;
 
   const slideCounter = document.getElementById("slideCounter");
   const progressFill = document.getElementById("progressFill");
   const currentPresenterName = document.getElementById("currentPresenterName");
-  const drawerOverlay = document.getElementById("drawerOverlay");
 
   function goToSlide(slideNum) {
     if (slideNum < 1 || slideNum > totalSlides) return;
@@ -2305,8 +2256,6 @@
 
     const presenter = currentSlideEl && currentSlideEl.dataset.presenter ? currentSlideEl.dataset.presenter : "Jericho";
     currentPresenterName.textContent = presenter.toUpperCase();
-
-    updateDrawerActive();
   }
 
   function nextSlide() {
@@ -2315,48 +2264,6 @@
 
   function prevSlide() {
     if (currentSlide > 1) goToSlide(currentSlide - 1);
-  }
-
-  function toggleDrawerModal() {
-    isDrawerOpen = !isDrawerOpen;
-    if (isDrawerOpen) {
-      drawerOverlay.classList.add("active");
-    } else {
-      drawerOverlay.classList.remove("active");
-    }
-  }
-
-  function buildDrawerGrid() {
-    const grid = document.getElementById("drawerGrid");
-    grid.innerHTML = "";
-    for (let i = 1; i <= totalSlides; i++) {
-      const slideEl = document.getElementById(`slide-${i}`);
-      const title = slideEl ? slideEl.dataset.title : `Slide ${i}`;
-      const presenter = slideEl && slideEl.dataset.presenter ? slideEl.dataset.presenter.toUpperCase() : "MODULE 2";
-      const div = document.createElement("div");
-      div.className = `drawer-tile-btn ${i === currentSlide ? 'active' : ''}`;
-      div.id = `drawer-item-${i}`;
-      div.onclick = () => {
-        goToSlide(i);
-        toggleDrawerModal();
-      };
-      div.innerHTML = `
-        <div style="font-family: var(--font-mono); font-size: 0.72rem; font-weight:800; color: var(--accent-terracotta);">SLIDE ${i < 10 ? '0' + i : i}</div>
-        <div style="font-family: var(--font-display); font-size: 0.92rem; font-weight:800; color: inherit; margin-top:2px;">${title}</div>
-        <div class="tile-sub" style="font-family: var(--font-mono); font-size: 0.72rem; color: var(--text-light); margin-top: 4px;">TOPIC: ${presenter}</div>
-      `;
-      grid.appendChild(div);
-    }
-  }
-
-  function updateDrawerActive() {
-    for (let i = 1; i <= totalSlides; i++) {
-      const el = document.getElementById(`drawer-item-${i}`);
-      if (el) {
-        if (i === currentSlide) el.classList.add("active");
-        else el.classList.remove("active");
-      }
-    }
   }
 
   function toggleFullscreen() {
@@ -2376,35 +2283,14 @@
     } else if (e.key === "ArrowLeft" || e.key === "PageUp") {
       e.preventDefault();
       prevSlide();
-    } else if (e.key === "s" || e.key === "S") {
-      toggleDrawerModal();
     } else if (e.key === "f" || e.key === "F") {
       toggleFullscreen();
-    } else if (e.key === "Escape") {
-      if (isDrawerOpen) toggleDrawerModal();
     }
   });
 
   document.getElementById("btnNext").addEventListener("click", nextSlide);
   document.getElementById("btnPrev").addEventListener("click", prevSlide);
-  document.getElementById("btnDrawer").addEventListener("click", toggleDrawerModal);
-  document.getElementById("btnFullscreen").addEventListener("click", toggleFullscreen);
-
-  drawerOverlay.addEventListener("click", (e) => {
-    if (e.target === drawerOverlay) toggleDrawerModal();
-  });
-
-  buildDrawerGrid();
   goToSlide(1);
-
-  // Register PWA Service Worker for 100% Offline Access
-  if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js')
-        .then((reg) => console.log('[PWA] Service Worker active for offline use:', reg.scope))
-        .catch((err) => console.log('[PWA] Service Worker registration failed:', err));
-    });
-  }
 </script>
 
 </body>
